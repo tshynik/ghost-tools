@@ -1,50 +1,50 @@
 /***********************************************
-***  Methods for the use case updateBook  ******
+***  Methods for the use case updatePlayer  ******
 ************************************************/
-pl.view.updateBook = {
+pl.view.updatePlayer = {
   setupUserInterface: function () {
-    var formEl = document.forms['Book'],
+    var formEl = document.forms['Player'],
         saveButton = formEl.commit,
-        selectBookEl = formEl.selectBook;
-    var key="", keys=[], book=null, optionEl=null, i=0;
-    // load all book objects
-    Book.loadAll();
-    // populate the selection list with books
-    keys = Object.keys( Book.instances);
+        selectPlayerEl = formEl.selectPlayer;
+    var key="", keys=[], player=null, optionEl=null, i=0;
+    // load all player objects
+    Player.loadAll();
+    // populate the selection list with players
+    keys = Object.keys( Player.instances);
     for (i=0; i < keys.length; i++) {
       key = keys[i];
-      book = Book.instances[key];
+      player = Player.instances[key];
       optionEl = document.createElement("option");
-      optionEl.text = book.title;
-      optionEl.value = book.isbn;
+      //optionEl.text = player.title;
+      optionEl.value = player.color;
       selectBookEl.add( optionEl, null);
     }
-    // when a book is selected, populate the form with the book data
-    selectBookEl.addEventListener("change", function () {
-        var book=null, key = selectBookEl.value;
+    // when a player is selected, populate the form with the player data
+    selectPlayerEl.addEventListener("change", function () {
+        var player=null, key = selectPlayerEl.value;
         if (key) {
-          book = Book.instances[key];
-          formEl.isbn.value = book.isbn;
-          formEl.title.value = book.title;
-          formEl.year.value = book.year;
+          player = Player.instances[key];
+          formEl.color.value = player.color;
+          formEl.solution.value = player.solution;
+          //formEl.year.value = player.year;
         } else {
           formEl.reset();
         }
     });
-    saveButton.addEventListener("click", 
-        pl.view.updateBook.handleSaveButtonClickEvent);
+    saveButton.addEventListener("click",
+        pl.view.updatePlayer.handleSaveButtonClickEvent);
     window.addEventListener("beforeunload", function () {
-        Book.saveAll(); 
+        Player.saveAll();
     });
   },
   // save data
   handleSaveButtonClickEvent: function () {
-    var formEl = document.forms['Book'];
-    var slots = { isbn: formEl.isbn.value, 
-          title: formEl.title.value, 
-          year: formEl.year.value
+    var formEl = document.forms['Player'];
+    var slots = { color: formEl.color.value,
+          solution: formEl.solution.value
+          //year: formEl.year.value
         };
-    Book.update( slots);
+    Player.update( slots);
     formEl.reset();
   }
 };

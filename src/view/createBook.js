@@ -1,25 +1,25 @@
 /***********************************************
 ***  Methods for the use case createBook  ******
 ************************************************/
-pl.view.createBook = {
+pl.view.createPlayer = {
   setupUserInterface: function () {
-    var saveButton = document.forms['Book'].commit;
+    var saveButton = document.forms['Player'].commit;
     // load all book objects
-    Book.loadAll();
+    Player.loadAll();
     // Set an event handler for the save/submit button
-    saveButton.addEventListener("click", 
-        pl.view.createBook.handleSaveButtonClickEvent);
+    saveButton.addEventListener("click",
+        pl.view.createPlayer.handleSaveButtonClickEvent);
     window.addEventListener("beforeunload", function () {
-        Book.saveAll(); 
+        Player.saveAll();
     });
   },
   // save user input data
   handleSaveButtonClickEvent: function () {
-    var formEl = document.forms['Book'];
-    var slots = { isbn: formEl.isbn.value, 
-        title: formEl.title.value, 
-        year: formEl.year.value};
-    Book.add( slots);
+    var formEl = document.forms['Player'];
+    var slots = { color: formEl.color.value,
+        solution: formEl.solution.value
+    };
+    Player.add( slots );
     formEl.reset();
   }
 };

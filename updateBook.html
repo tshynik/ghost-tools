@@ -7,20 +7,20 @@
   <script src="src/model/Book.js"></script>
   <script src="src/view/updateBook.js"></script>
   <script>
-   window.addEventListener("load", pl.view.updateBook.setupUserInterface);
+   window.addEventListener("load", pl.view.updatePlayer.setupUserInterface);
   </script>
 </head>
 <body>
-  <h1>Public Library: Update a book record</h1>
-  <form id="Book">
+  <h1>Ghost Tools: Update a player record</h1>
+  <form id="Player">
     <p>
-      <label>Select book: 
-        <select name="selectBook"><option value=""> --- </option></select>
+      <label>Select player:
+        <select name="selectPlayer"><option value=""> --- </option></select>
       </label>
     </p>
-    <p><label>ISBN: <input name="isbn" readonly="readonly" /></label></p>
-    <p><label>Title: <input name="title" /></label></p>
-    <p><label>Year: <input name="year" /></label></p>
+    <p><label>Color: <input name="color" readonly="readonly" /></label></p>
+    <p><label>Solution: <input name="solution" /></label></p>
+    <!--p><label>Year: <input name="year" /></label></p-->
     <p><button type="button" name="commit">Save Changes</button></p>
   </form>
   <nav><a href="index.html">Back to main menu</a></nav>

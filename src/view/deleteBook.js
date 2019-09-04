@@ -1,37 +1,37 @@
 /***********************************************
 ***  Methods for the use case "delete book"  ***
 ************************************************/
-pl.view.deleteBook = {
+pl.view.deletePlayer = {
   setupUserInterface: function () {
-    var deleteButton = document.forms['Book'].commit;
-    var selectEl = document.forms['Book'].selectBook;
+    var deleteButton = document.forms['Player'].commit;
+    var selectEl = document.forms['Player'].selectPlayer;
     var key="", keys=[], book=null, optionEl=null, i=0;
     // load all book objects
-    Book.loadAll();
-    keys = Object.keys( Book.instances);
-    // populate the selection list with books
+    Player.loadAll();
+    keys = Object.keys( Player.instances );
+    // populate the selection list with players
     for (i=0; i < keys.length; i++) {
       key = keys[i];
-      book = Book.instances[key];
+      player = Player.instances[key];
       optionEl = document.createElement("option");
-      optionEl.text = book.title;
-      optionEl.value = book.isbn;
+      optionEl.text = player.color;
+      optionEl.value = player.solution;
       selectEl.add( optionEl, null);
     }
-    deleteButton.addEventListener("click", 
-        pl.view.deleteBook.handleDeleteButtonClickEvent);
+    deleteButton.addEventListener("click",
+        pl.view.deletePlayer.handleDeleteButtonClickEvent);
     window.addEventListener("beforeunload", function () {
-        Book.saveAll(); 
+        Player.saveAll();
     });
   },
   // Event handler for deleting a book
   handleDeleteButtonClickEvent: function () {
-    var selectEl = document.forms['Book'].selectBook;
-    var isbn = selectEl.value;
-    if (isbn) {
-      Book.destroy( isbn);
+    var selectEl = document.forms['Player'].selectPlayer;
+    var color = selectEl.value;
+    if (color) {
+      Player.destroy( color );
       // remove deleted book from select options
-      selectEl.remove( selectEl.selectedIndex);
+      selectEl.remove( selectEl.selectedIndex );
     }
   }
 };
