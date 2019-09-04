@@ -14,8 +14,9 @@
       key = keys[i];
       row = tableBodyEl.insertRow();
       row.insertCell(-1).textContent = Player.instances[key].color;
-      row.insertCell(-1).textContent = Player.instances[key].solution;
-      //row.insertCell(-1).textContent = Player.instances[key].year;
+      row.insertCell(-1).textContent = Player.instances[key].person;
+      row.insertCell(-1).textContent = Player.instances[key].place;
+      row.insertCell(-1).textContent = Player.instances[key].weapon;
     }
   }
 };

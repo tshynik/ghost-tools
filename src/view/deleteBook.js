@@ -15,7 +15,9 @@ pl.view.deletePlayer = {
       player = Player.instances[key];
       optionEl = document.createElement("option");
       optionEl.text = player.color;
-      optionEl.value = player.solution;
+      optionEl.value = player.person;
+      optionEl.value = player.place;
+      optionEl.value = player.weapon;
       selectEl.add( optionEl, null);
     }
     deleteButton.addEventListener("click",

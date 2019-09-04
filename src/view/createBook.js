@@ -17,7 +17,9 @@ pl.view.createPlayer = {
   handleSaveButtonClickEvent: function () {
     var formEl = document.forms['Player'];
     var slots = { color: formEl.color.value,
-        solution: formEl.solution.value
+        person: formEl.person.value,
+        place: formEl.place.value,
+        weapon: formEl.weapon.value,
     };
     Player.add( slots );
     formEl.reset();

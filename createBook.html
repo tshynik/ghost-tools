@@ -7,15 +7,16 @@
   <script src="src/model/Book.js"></script>
   <script src="src/view/createBook.js"></script>
   <script>
-   window.addEventListener("load", pl.view.createBook.setupUserInterface);
+   window.addEventListener("load", pl.view.createPlayer.setupUserInterface);
   </script>
 </head>
 <body>
   <h1>Public Library: Create a new player record</h1>
   <form id="Player">
     <p><label>Color: <input name="color" /></label></p>
-    <p><label>Solution: <input name="solution" /></label></p>
-    <!--p><label>Year: <input name="year" /></label></p-->
+    <p><label>Person: <input name="person" /></label></p>
+    <p><label>Place: <input name="place" /></label></p>
+    <p><label>Weapon: <input name="weapon" /></label></p>
     <p><button type="button" name="commit">Save</button></p>
   </form>
   <nav><a href="index.html">Back to main menu</a></nav>
